@@ -2,7 +2,26 @@
 import os
 
 # Aqui vamos criar as nossas variáveis, neste caso será um dicionário para armazenar as informações dos restaurantes com seus dados
-restaurantes = [['Pizzaloka', 'Pizza', 'William'], ['Sushibar Lounge', 'Sushi', 'Victoria']]
+restaurantes = [
+    {
+        "nome": "Pizzaloka",
+        "categoria": "Pizza",
+        "proprietario": "William",
+        "ativo": True,
+    },
+    {
+        "nome": "Sushibar Lounge",
+        "categoria": "Sushi",
+        "proprietario": "Victoria",
+        "ativo": False,
+    },
+    {
+        "nome": "Cantina da Ana",
+        "categoria": "Brasileira",
+        "proprietario": "Ana Maria",
+        "ativo": False,
+    },
+]
 
 # Funções são utilizadas para deixar o código mais limpo, e quando necessário alguma alteração, podemos fazer isso apenas na função e não nas condicionais
 def exibir_nome_programa():
@@ -20,10 +39,10 @@ def cadastrar_novo_restaurante():
     exibir_subtitulo('Área de cadastro para novos restaurantes:')
     
     nome_restaurante = input("Informe aqui o nome do seu restaurante: ")
-    categoria_restaurante = input("Informe aqui o tipo de comida que seu restaurante oferece: ")    
+    categoria_restaurante = input("Informe aqui o tipo de comida que seu restaurante oferece: ")
     nome_proprietario_restaurante = input("Informe aqui o nome do proprietário do restaurante: ")
 
-    restaurantes.append([nome_restaurante, categoria_restaurante, nome_proprietario_restaurante])
+    restaurantes.append({'nome': nome_restaurante, 'categoria': categoria_restaurante, 'proprietario': nome_proprietario_restaurante, 'ativo': False})
 
     print(f'\nRestaurante {nome_restaurante} cadastrado com sucesso!')
     
@@ -31,19 +50,37 @@ def cadastrar_novo_restaurante():
 
 def listar_restaurantes():
     exibir_subtitulo('Listagem de restaurantes cadastrados:')
-    
+
     for restaurante in restaurantes:
-        print(f'. {restaurante}')
+        print(f'- Nome: {restaurante['nome']} | Categoria: {restaurante['categoria']} | Proprietário(a): {restaurante['proprietario']} | Ativo: {restaurante['ativo']}.')
 
     voltar_ao_menu()
 
-def ativar_novo_restaurante():
-    exibir_subtitulo('Hora de ativar o seu restaurante!')
-    
+def alternar_estado_restaurante():
+    exibir_subtitulo('Ative ou desative seu restaurante aqui!')
+
+    nome_restaurante = input('Informe o nome do seu restaurante: ')
+
+    for restaurante in restaurantes:
+        if nome_restaurante == restaurante:
+            alternar_estado_restaurante = int(input('Digite 0 para desativar ou 1 para ativar: '))
+
+            if alternar_estado_restaurante == 0 and restaurantes['ativo'] == True:
+                restaurantes['ativo'] == False
+            elif alternar_estado_restaurante == 1 and restaurantes['ativo'] == False:
+                restaurantes['ativo'] = True
+            elif alternar_estado_restaurante == 0 and restaurantes['ativo'] == False:
+                print('Não é possível desativar restaurante, ele já está desativado.')
+            else:
+                print('Não é possível ativar restaurante, ele já está ativado.')
+        else:
+            print('Nome do restaurante não encontrado!')
+        break
+
     voltar_ao_menu()
 
 def opcao_invalida():
-    exibir_subtitulo("Opção Inválida!")
+    exibir_subtitulo('Opção Inválida!')
     
     voltar_ao_menu()
 
@@ -52,7 +89,7 @@ def encerrar_programa():
 
 def escolher_opcao():
     try:
-        opcao_escolhida = int(input("Escolha uma opção: "))
+        opcao_escolhida = int(input('Escolha uma opção: '))
 
         match opcao_escolhida:
             case 1:
@@ -60,7 +97,7 @@ def escolher_opcao():
             case 2:
                 listar_restaurantes()
             case 3:
-                ativar_novo_restaurante()
+                alternar_estado_restaurante()
             case 4:
                 encerrar_programa()
             case _:
@@ -78,6 +115,7 @@ def escolher_opcao():
     #     encerrar_programa()
 
 def voltar_ao_menu():
+    print()
     input('Pressione Enter para voltar ao menu principal ')
     main()
 
