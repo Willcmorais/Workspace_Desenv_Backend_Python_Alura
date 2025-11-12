@@ -8,6 +8,18 @@
 
 
 def calculo_de_medias():
+    """
+    Esta função vai calcular a média dos alunos, pegando 3 notas e dividindo pela quantidade de notas.
+
+    Inputs:
+    - Notas
+
+    Outputs:
+    - Soma;
+    - Média;
+    - Resultado do aluno referente à média(aprovado, reprovado, recuperação).
+    """
+
     soma = 0
     media = 0
 
