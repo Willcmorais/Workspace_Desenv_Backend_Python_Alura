@@ -9,12 +9,20 @@
 
 
 def cadastrar_user():
-    nome_user = ""
-    senha_user = ""
+    while True:
+        nome_usuario = input("Digite seu nome de usuário: ")
+        senha_usuario = input("Digite sua senha: ")
 
-    while len(nome_user) < 5 and len(senha_user) < 8:
-        nome_user = input("Informe seu nome de usuário(mínimo de 5 caracteres): ")
-        senha_user = input("Informe a sua senha(mínimo de 8 caracteres): ")
+        if len(nome_usuario) < 5:
+            print("O nome de usuário deve ter pelo menos 5 caracteres.")
+            continue
+
+        if len(senha_usuario) < 8:
+            print("A senha deve ter pelo menos 8 caracteres.")
+            continue
+
+        print("Cadastro realizado com sucesso!")
+        break
 
 
 def main():
