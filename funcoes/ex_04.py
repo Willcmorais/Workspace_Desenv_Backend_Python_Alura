@@ -6,6 +6,8 @@ telefones = ["11987654321", "21912345678", "31987654321", "11911223344"]
 
 
 def converter_telefones(telefones):
+    """tel itera com a variável telefones(que será passada quando a função for chamada) e através do map ele vai aplicar a função p cada elemento da iterável, transformando de str para int e salvando em uma lista chamada telefones_convertidos."""
+
     telefones_convertidos = list(map(lambda tel: int(tel), telefones))
     return telefones_convertidos
 
