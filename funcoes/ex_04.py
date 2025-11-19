@@ -5,21 +5,27 @@
 telefones = ["11987654321", "21912345678", "31987654321", "11911223344"]
 
 
-def converter_string_int(telefones):
-    numeros = list(map(lambda tel: int(tel), telefones))
-    return numeros
+def converter_telefones(telefones):
+    telefones_convertidos = list(map(lambda tel: int(tel), telefones))
+    return telefones_convertidos
 
 
-def validar_conversao_int():
-    return lambda tel: tel == int, telefones
+def verificar_tipos(telefones):
+    for numeros in telefones:
+        if isinstance(numeros, int):
+            return "Todos os números foram convertidos para inteiro!"
+        else:
+            return "Os números não foram convertidos para inteiro!"
 
 
 def main():
-    print(
-        f"Lista de strings convertida para inteiros: {converter_string_int(telefones)}"
-    )
+    print(f"listagem original: {telefones}")
 
-    print(f"A conversão da lista está {validar_conversao_int()}")
+    lista_convertida_int = converter_telefones(telefones)
+    print(f"Listagem convertida para inteiros: {lista_convertida_int}")
+
+    validacao = verificar_tipos(lista_convertida_int)
+    print(validacao)
 
 
 if __name__ == "__main__":
