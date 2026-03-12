@@ -1,5 +1,5 @@
 from projeto_04_validar_cpf import validar_cpf
 
-cpf_do_usuario = input("Informe aqui seu CPF: ")
+cpf = input("Informe aqui seu CPF: ")
 
-validar_cpf(cpf_do_usuario)
+validar_cpf(cpf)
