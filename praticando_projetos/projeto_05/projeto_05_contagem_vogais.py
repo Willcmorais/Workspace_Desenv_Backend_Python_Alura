@@ -3,6 +3,7 @@
 
 def formatar_texto(texto):
     texto = texto.lower().strip()
+    return texto
 
 
 def contar_vogais(texto):
