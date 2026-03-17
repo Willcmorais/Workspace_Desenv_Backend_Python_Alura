@@ -76,25 +76,20 @@ def determinar_resultado(opcao_escolhida, opcao_da_maquina):
 def jogar():
     # Dicionário para traduzir o número na jogada correspondente
     opcoes = {1: "Pedra", 2: "Papel", 3: "Tesoura"}
-
     # Variáveis de pontuação
     pontos_jogador = 0
     pontos_maquina = 0
 
-    # Variáveis de estado do jogo
-    jogando = True
-
-    while jogando:
+    while True:
         # Chama a função para mostrar o placar
         exibir_placar(pontos_jogador, pontos_maquina)
 
         # Função que valida a jogada
         opcao_escolhida = validar_jogada(opcoes)
 
-        # Condição de parada
         if opcao_escolhida == 0:
             print(
-                f"\nSaindo do jogo... Placar final: Você {pontos_jogador} x {pontos_maquina} Máquina. Até mais!"
+                f"\nSaindo do jogo...\nPlacar final: Você {pontos_jogador} x {pontos_maquina} Máquina.\nAté mais!"
             )
             break
 
