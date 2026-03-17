@@ -16,24 +16,19 @@ def adivinhar_numero():
         try:
             numero_escolhido = int(input("Digite qual número acha que é o secreto: "))
         except ValueError:
-            print("Digite apenas números inteiros válidos.")
+            print("[Erro] Digite apenas números inteiros válidos.")
             limpar_tela()
             continue
 
-        if numero_escolhido not in range(1, 101):
-            print("Você precisa escolher um número entre 1 e 100.")
-            limpar_tela()
-            continue
-        if numero_escolhido < numero_secreto:
+        if not (1 <= numero_escolhido <= 100):
+            print("[Atenção] Você precisa escolher um número entre 1 e 100.")
+        elif numero_escolhido < numero_secreto:
             print("Você errou. Mas não desista, você está quase lá!")
-            print("O número que você escolheu é menor que o número secreto...")
-            limpar_tela()
-            continue
-        if numero_escolhido > numero_secreto:
+            print("DICA: O número secreto É MAIOR...")
+        elif numero_escolhido > numero_secreto:
             print("Você errou. Mas não desista, você está quase lá!")
-            print("O número que você escolheu é maior que o número secreto...")
-            limpar_tela()
-            continue
+            print("DICA: O número secreto é MENOR...")
         else:
-            print("Parabéns! Você acertou o número secreto.")
+            print(f"\n🎉 Parabéns! Você acertou o número secreto ({numero_secreto}).")
             break
+        limpar_tela()
