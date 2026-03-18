@@ -65,6 +65,7 @@ def calcular_resultado(operador: str, n1: float, n2: float) -> float:
 
 
 def mostrar_resultado() -> None:
+    # Ele pega a tupla devolvida e distribui os valores na exata ordem em que chegaram.
     operador, primeiro_numero, segundo_numero = obter_dados_usuario()
 
     try:
