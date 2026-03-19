@@ -84,9 +84,13 @@ def executar_opcao_escolhida(opcao: str, lista: list) -> bool:
 
 
 def obter_opcao() -> str:
+    # define as tuplas válidas
     opcoes_validas = ("1", "2", "3", "4")
+    # entra no loop
     while True:
+        # vai para a função de mostrar o menu
         mostrar_menu()
+        # volta para a função obter opção, pois é o que está na frente da pilha de execução
         opcao_escolhida = input("\nEscolha uma das opções: ")
 
         if opcao_escolhida not in opcoes_validas:
@@ -98,9 +102,12 @@ def obter_opcao() -> str:
 
 # ====== Função principal ======
 def main():
+    # início de toda a execução
     lista_de_tarefas = []
     rodando = True
 
     while rodando:
+        # para e vai para outra função
         opcao = obter_opcao()
+        # após obter a opção ele volta para o main e executa a linha que vai pausar novamente e jogar para outra função
         rodando = executar_opcao_escolhida(opcao, lista_de_tarefas)
