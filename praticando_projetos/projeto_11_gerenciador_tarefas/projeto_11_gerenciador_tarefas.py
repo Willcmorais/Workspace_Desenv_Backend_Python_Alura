@@ -21,28 +21,53 @@ def mostrar_menu():
 
 # ====== Funções de lógica principais ======
 def adicionar_tarefa(lista: list) -> None:
-    tarefa = input("Informe qual tarefa deseja adicionar: ").capitalize()
+    tarefa = input("\nInforme qual tarefa deseja adicionar: ").strip().capitalize()
     lista.append(tarefa)
+    print("Tarefa adicionada a lista com sucesso!")
 
 
 def listar_tarefas(lista: list) -> None:
     print("\n--- Suas Tarefas ---")
-    for tarefa in lista:
-        print(tarefa)
-    pass
+
+    if not lista:
+        print("Sua lista está vazia!")
+        return
+
+    # O enumerate(lista) gera pares: (0, "Tarefa A"), (1, "Tarefa B")...
+    for indice, tarefa in enumerate(lista):
+        print(f"{indice}. {tarefa}")
 
 
 def eliminar_tarefa(lista: list) -> None:
     print("\n--- Remover Tarefa ---")
-    # Lógica para remover virá aqui...
-    pass
+
+    if not lista:
+        print("A lista está vazia!")
+        limpar_tela()
+        return
+
+    while True:
+        try:
+            tarefa_removida = int(
+                input("\nInforme o índice da tarefa que quer remover: ")
+            )
+
+            if tarefa_removida not in range(len(lista)) or tarefa_removida < 0:
+                print("Informe um índice válido!")
+                continue
+
+            tarefa_apagada = lista.pop(tarefa_removida)
+            print(f"Tarefa ({tarefa_apagada}) removida da lista com sucesso!")
+            break
+
+        except ValueError:
+            print("[Erro] Por gentileza, digite apenas números inteiros.")
 
 
 def executar_opcao_escolhida(opcao: str, lista: list) -> bool:
     match opcao:
         case "1":
             adicionar_tarefa(lista)
-            print("Tarefa adicionada a lista com sucesso!")
             limpar_tela()
             return True  # Continua rodando
         case "2":
@@ -51,7 +76,6 @@ def executar_opcao_escolhida(opcao: str, lista: list) -> bool:
             return True
         case "3":
             eliminar_tarefa(lista)
-            print("Tarefa removida da lista com sucesso!")
             limpar_tela()
             return True
         case "4":
@@ -78,6 +102,5 @@ def main():
     rodando = True
 
     while rodando:
-        limpar_tela()
         opcao = obter_opcao()
         rodando = executar_opcao_escolhida(opcao, lista_de_tarefas)
