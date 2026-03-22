@@ -75,3 +75,7 @@ def mostrar_resultado() -> None:
         )
     except ZeroDivisionError:
         print(f"\n[Erro] Não é possível dividir por zero.")
+
+
+def main():
+    mostrar_resultado()
