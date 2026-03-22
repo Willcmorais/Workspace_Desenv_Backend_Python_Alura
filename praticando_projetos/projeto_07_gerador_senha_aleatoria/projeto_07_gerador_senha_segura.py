@@ -18,13 +18,20 @@ def criar_senha_aleatoria():
     ]
 
     # Cria uma variável que une todas as outras variáveis
-    todos_caracteres = minusculas + maiusculas + caracteres_especiais + numeros
+    todos_caracteres_obrigatorios = (
+        minusculas + maiusculas + caracteres_especiais + numeros
+    )
 
     # Utiliza a função extend para adicionar todos os caracteres na senha já criada com os outros 4 caracteres.
-    senha.extend(random.choices(todos_caracteres, k=8))
+    senha.extend(random.choices(todos_caracteres_obrigatorios, k=8))
 
     # Reorganiza os caracteres da lista, evitando que os primeiros sejam sempre as 4 obrigações.
     random.shuffle(senha)
 
     # Reverte a lista para uma string
     return "".join(senha)
+
+
+def main():
+    print("Senha gerada:")
+    print(criar_senha_aleatoria())

@@ -1,5 +1,4 @@
-from projeto_07_gerador_senha_segura import criar_senha_aleatoria
+from projeto_07_gerador_senha_segura import main
 
-# Exibir a senha gerada
-
-print(f"Senha gerada: {criar_senha_aleatoria()}")
+if __name__ == "__main__":
+    main()
