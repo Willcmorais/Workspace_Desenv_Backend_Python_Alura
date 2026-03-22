@@ -1,4 +1,4 @@
-from projeto_08_jokenpo import jogar
+from projeto_08_jokenpo import main
 
 if __name__ == "__main__":
-    jogar()
+    main()

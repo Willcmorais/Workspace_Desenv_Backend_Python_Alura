@@ -1,5 +1,8 @@
 import random, os
 
+# Variável global das opções disponíveis
+opcoes_validas = {0: "Sair", 1: "Pedra", 2: "Papel", 3: "Tesoura"}
+
 # ---------------------------------------------------------
 # FUNÇÕES DE INTERFACE / VISUAIS
 # ---------------------------------------------------------
@@ -17,7 +20,7 @@ def exibir_placar(pontos_jogador, pontos_maquina):
     print("=" * 35)
     print(f"  PLACAR: Você {pontos_jogador} x {pontos_maquina} Máquina")
     print("=" * 35)
-    print("Opções: [1] Pedra | [2] Papel | [3] Tesoura | [0] Sair\n")
+    print("Opções: [0] Sair | [1] Pedra | [2] Papel | [3] Tesoura\n")
 
 
 # ---------------------------------------------------------
@@ -25,22 +28,22 @@ def exibir_placar(pontos_jogador, pontos_maquina):
 # ---------------------------------------------------------
 
 
-def validar_jogada(opcoes):
+def validar_jogada():
     while True:
         try:
             jogada = int(input("Informe a sua jogada: "))
-
-            # Se a jogada for 0 ou uma das chaves do dicionário (1, 2, 3), é válida.
-            if jogada == 0 or jogada in opcoes:
-                # O return encerra a função e quebra o loop automaticamente
-                return jogada
-
-            # Se chegou aqui, é porque é um número, mas não é 0, 1, 2 ou 3
-            print("\nOpção inválida! Escolha 1, 2, 3 ou 0 para sair.\n")
-
         except ValueError:
             # Se chegou aqui, é porque o usuário deu Enter vazio ou digitou letras
             print("\nEntrada inválida! Por favor, digite apenas números.\n")
+            continue
+
+        # Se a jogada for 0 ou uma das chaves do dicionário (1, 2, 3), é válida.
+        if jogada not in opcoes_validas.keys():
+            # Se chegou aqui, é porque é um número, mas não é 0, 1, 2 ou 3
+            print("\nOpção inválida! Escolha 1, 2, 3 ou 0 para sair.\n")
+            continue
+        # O return encerra a função e quebra o loop automaticamente
+        return jogada
 
 
 def determinar_resultado(opcao_escolhida, opcao_da_maquina):
@@ -75,7 +78,6 @@ def determinar_resultado(opcao_escolhida, opcao_da_maquina):
 
 def jogar():
     # Dicionário para traduzir o número na jogada correspondente
-    opcoes = {1: "Pedra", 2: "Papel", 3: "Tesoura"}
     # Variáveis de pontuação
     pontos_jogador = 0
     pontos_maquina = 0
@@ -85,7 +87,7 @@ def jogar():
         exibir_placar(pontos_jogador, pontos_maquina)
 
         # Função que valida a jogada
-        opcao_escolhida = validar_jogada(opcoes)
+        opcao_escolhida = validar_jogada()
 
         if opcao_escolhida == 0:
             print(
@@ -97,7 +99,7 @@ def jogar():
 
         # Agora mostramos o nome da jogada em vez do número
         print(
-            f"\nVocê escolheu {opcoes[opcao_escolhida]} e máquina escolheu {opcoes[opcao_da_maquina]}."
+            f"\nVocê escolheu {opcoes_validas[opcao_escolhida]} e máquina escolheu {opcoes_validas[opcao_da_maquina]}."
         )
 
         # Função que determina os resultados
@@ -111,3 +113,7 @@ def jogar():
             pontos_maquina += 1
 
         limpar_tela()
+
+
+def main():
+    jogar()
