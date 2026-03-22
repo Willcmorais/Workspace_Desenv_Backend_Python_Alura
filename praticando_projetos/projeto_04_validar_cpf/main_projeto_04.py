@@ -1,5 +1,4 @@
-from projeto_04_validar_cpf import validar_cpf
+from projeto_04_validar_cpf import main
 
-cpf = input("Informe aqui seu CPF: ")
-
-print(validar_cpf(cpf))
+if __name__ == "__main__":
+    main()
