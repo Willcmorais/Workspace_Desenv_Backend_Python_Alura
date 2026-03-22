@@ -1,7 +1,4 @@
-from projeto_06_identificar_maior_palavra import identificar_maior_palavra
+from projeto_06_identificar_maior_palavra import main
 
-# receber o texto
-
-texto = input("Informe aqui o seu texto: ")
-
-identificar_maior_palavra(texto)
+if __name__ == "__main__":
+    main()

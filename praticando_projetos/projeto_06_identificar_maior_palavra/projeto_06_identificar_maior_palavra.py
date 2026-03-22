@@ -2,7 +2,8 @@
 # identificar as palavras com mais de 10 letras
 
 
-def formatar_texto(texto):
+def formatar_texto():
+    texto = input("Informe aqui o seu texto: ")
     texto = texto.lower()
     caracteres_especiais = ",.!|?;:\"'()[]{}"
 
@@ -11,17 +12,21 @@ def formatar_texto(texto):
     return texto
 
 
-def identificar_maior_palavra(texto):
-    formatar_texto(texto)
+def identificar_maior_palavra():
     contador_palavras_longas = []
+    texto_formatado = formatar_texto()
 
-    for palavra in texto.split():
+    for palavra in texto_formatado.split():
         if len(palavra) >= 10:
             contador_palavras_longas.append(palavra)
 
     if contador_palavras_longas:
-        print("Palavras longas encontradas: ")
+        print("\nPalavras longas encontradas: \n")
         for palavra in contador_palavras_longas:
             print(palavra)
     else:
         print("Nenhuma palavra longa foi encontrada no texto.")
+
+
+def main():
+    identificar_maior_palavra()
