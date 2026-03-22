@@ -23,12 +23,18 @@ def adivinhar_numero():
         if not (1 <= numero_escolhido <= 100):
             print("[Atenção] Você precisa escolher um número entre 1 e 100.")
         elif numero_escolhido < numero_secreto:
-            print("Você errou. Mas não desista, você está quase lá!")
-            print("DICA: O número secreto É MAIOR...")
+            print(
+                "Você errou. Mas não desista, você está quase lá!\nDICA: O número secreto É MAIOR..."
+            )
         elif numero_escolhido > numero_secreto:
-            print("Você errou. Mas não desista, você está quase lá!")
-            print("DICA: O número secreto é MENOR...")
+            print(
+                "Você errou. Mas não desista, você está quase lá!\nDICA: O número secreto é MENOR..."
+            )
         else:
             print(f"\n🎉 Parabéns! Você acertou o número secreto ({numero_secreto}).")
             break
         limpar_tela()
+
+
+def main():
+    adivinhar_numero()
