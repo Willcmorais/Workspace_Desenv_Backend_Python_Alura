@@ -1,14 +1,15 @@
 class ClienteBanco:
     ano_atual = 2026
 
+    # Não usamos o _ nos argumentos do métodos
     def __init__(
-        self, _nome="", _ano_nasc=0, _profissao="", _estado_civil="", _nacionalidade=""
+        self, _nome="", ano_nasc=0, profissao="", estado_civil="", nacionalidade=""
     ):
         self._nome = _nome.title()
-        self._ano_nasc = _ano_nasc
-        self._profissao = _profissao.title()
-        self._estado_civil = _estado_civil.title()
-        self._nacionalidade = _nacionalidade.capitalize()
+        self._ano_nasc = ano_nasc
+        self._profissao = profissao.title()
+        self._estado_civil = estado_civil.title()
+        self._nacionalidade = nacionalidade.capitalize()
         self._status = False
 
     def __str__(self):
@@ -24,7 +25,8 @@ class ClienteBanco:
 
     def alternar_status(self):
         self._status = not self._status
-        return print(f"Status do cliente {self._nome} alterado com sucesso!\n")
+        # Retornamos o novo valor caso queira usar em uma validação depois
+        return self._status
 
 
 cliente1 = ClienteBanco(
