@@ -31,3 +31,17 @@ class Restaurante:
     # alterna o status, se for True fica False e vice-versa
     def alternar_status(self):
         self._status = not self._status
+
+
+restaurante_mexicano1 = Restaurante(
+    "escalantes texmex", "comida mexicana", "16h às 00h"
+)
+restaurante_japones1 = Restaurante("mianzô", "comida japonesa", "18h às 23h")
+restaurante_brasileiro1 = Restaurante(
+    "comedoria da cona ana", "comida caseira", "11h às 19h"
+)
+
+# alternando o status do restaurante para ativo
+restaurante_mexicano1.alternar_status()
+# listando todos os restaurantes
+Restaurante.listar_restaurantes()
