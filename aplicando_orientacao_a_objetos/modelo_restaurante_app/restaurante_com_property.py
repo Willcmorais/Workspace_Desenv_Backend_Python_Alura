@@ -21,11 +21,11 @@ class Restaurante:
         print("-" * 48, "LISTA DE RESTAURANTES", "-" * 48, "\n")
         # Como estamos fazendo operações com os nomes, colocamos eles entre { }. Caso contrário não conseguiríamos justificar igual ao print do loop
         print(
-            f"{"Nome do restaurante:".ljust(25)} | {"Categoria:".ljust(25)} | {"Horário:".ljust(25)} | Status:"
+            f"{"Nome do restaurante:".ljust(25)} | {"Categoria:".ljust(25)} | {"Horário:".ljust(25)} | {"Avaliação:".ljust(25)} | Status:"
         )
         for restaurante in cls.lista_de_restaurantes:
             print(
-                f"{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante._horario_funcionamento.ljust(25)} | {restaurante.status}"
+                f"{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante._horario_funcionamento.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)} | {restaurante.status}"
             )
         print("-" * 119)
 
@@ -33,10 +33,6 @@ class Restaurante:
     @property
     def status(self):
         return "✅" if self._status else "❎"
-
-    def receber_avaliacao(self, cliente, nota):
-        avaliacao = Avaliacao(cliente, nota)
-        self._avaliacao.append(avaliacao)
 
     @property
     def media_avaliacoes(self):
@@ -48,6 +44,10 @@ class Restaurante:
         quantidade_de_notas = len(self._avaliacao)
         media_das_notas = round(soma_das_notas / quantidade_de_notas, 1)
         return media_das_notas
+
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente, nota)
+        self._avaliacao.append(avaliacao)
 
     # alterna o status, se for True fica False e vice-versa
     def alternar_status(self):
