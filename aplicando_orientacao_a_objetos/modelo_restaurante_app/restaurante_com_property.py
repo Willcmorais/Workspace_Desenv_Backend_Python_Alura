@@ -38,7 +38,7 @@ class Restaurante:
     def media_avaliacoes(self):
         # se não tivermos nenhuma avaliação vai retornar zero
         if not self._avaliacao:
-            return 0
+            return "-"
         # pegue todas as avaliações e para cada avaliação só queremos a nota, vamos somar a nota
         soma_das_notas = sum(avaliacao._nota for avaliacao in self._avaliacao)
         quantidade_de_notas = len(self._avaliacao)
@@ -46,8 +46,9 @@ class Restaurante:
         return media_das_notas
 
     def receber_avaliacao(self, cliente, nota):
-        avaliacao = Avaliacao(cliente, nota)
-        self._avaliacao.append(avaliacao)
+        if 0 <= nota <= 5:
+            avaliacao = Avaliacao(cliente, nota)
+            self._avaliacao.append(avaliacao)
 
     # alterna o status, se for True fica False e vice-versa
     def alternar_status(self):

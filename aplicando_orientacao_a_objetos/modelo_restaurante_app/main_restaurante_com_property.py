@@ -1,13 +1,18 @@
 # Se o arquivo main estiver dentro da mesma pasta não é preciso puxar também o diretório da pasta.
 from restaurante_com_property import Restaurante
 
-restaurante_mexicano = Restaurante("escalantes texmex", "comida mexicana", "16h às 00h")
-restaurante_mexicano.receber_avaliacao("Guilherme", 10)
-restaurante_mexicano.receber_avaliacao("Gabriella", 8)
-restaurante_mexicano.receber_avaliacao("Maria", 5)
-
 
 def main():
+    # criando os restaurantes
+    restaurante_mexicano = Restaurante(
+        "escalantes texmex", "comida mexicana", "16h às 00h"
+    )
+
+    # implementando a avaliação para o restaurante
+    restaurante_mexicano.receber_avaliacao("Guilherme", 5)
+    restaurante_mexicano.receber_avaliacao("Gabriella", 5)
+    restaurante_mexicano.receber_avaliacao("Maria", 10)
+
     # listando todos os restaurantes
     Restaurante.listar_restaurantes()
 
