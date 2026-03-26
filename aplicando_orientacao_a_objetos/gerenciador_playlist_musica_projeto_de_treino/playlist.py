@@ -15,13 +15,20 @@ class Playlist:
         else:
             self._musicas.append(musica)
 
-    def remover_musica_da_playlist():
-        pass
+    def remover_musica_da_playlist(self, musica):
+        if len(self._musicas) == 0:
+            return "A playlist está vazia!"
+        elif not self._nome_playlist:
+            return "A playlist não existe!"
+        elif musica not in self._musicas:
+            return "A música não está na playlist!"
+        else:
+            self._musicas.remove(musica)
 
     def mostrar_playlist(self):
         print("=" * 10, f"{self._nome_playlist}", "=" * 10)
         if not self._musicas:
             print("A playlist está vazia!")
         else:
-            for musica in self._musicas:
-                print(musica)
+            for indice, musica in enumerate(self._musicas, 1):
+                print(f". {indice} - {musica}")

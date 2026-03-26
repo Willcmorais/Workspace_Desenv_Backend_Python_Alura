@@ -42,6 +42,9 @@ def main():
     playlist1.adicionar_musica_na_playlist(musica_aerosmith_8)
     playlist1.adicionar_musica_na_playlist(musica_aerosmith_9)
 
+    # Removendo uma música da playlist
+    # playlist1.remover_musica_da_playlist(musica_aerosmith_1)
+
     # Mostrando a playlist1
     playlist1.mostrar_playlist()
 
