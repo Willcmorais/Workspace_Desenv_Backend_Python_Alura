@@ -1,4 +1,4 @@
-from verificando_itens_dispensa import Despensa
+from gerenciador_despensa import Despensa
 
 
 def main():
