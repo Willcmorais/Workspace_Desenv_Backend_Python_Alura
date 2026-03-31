@@ -6,36 +6,36 @@
 class Despensa:
     def __init__(self, nome: str):
         self._nome = nome.title()
-        self._produtos = {
-            "Arroz",
-            "Mostarda",
-            "Feijão",
-            "Macarrão",
-            "Leite",
-            "Batata",
-            "Mandioca",
-            "Carne Moída",
-            "Coentro",
-            "Peito de Frango",
-            "Peixe",
-        }
+        self._produtos_despensa = set()
 
-    def mostrar_despensa(self):
-        print(f"--- {self._nome} ---\n")
-        for indice, produto in enumerate(sorted(self._produtos), 1):
-            print(f"{indice}. {produto}")
+    def adicionar_produto_despensa(self):
+        print(f"--- {self._nome} ---")
+        entrada = input(
+            "Informe os produtos que quer registrar separados por vírgula: "
+        ).split(",")
 
-    def verificar_produto(self, produto: str):
-        produto_title = produto.title()
-        if not produto_title in self._produtos:
+        for produto in entrada:
+            produto_refatorado = produto.strip().title()
+            if not produto:
+                continue
+            if produto in self._produtos_despensa:
+                print(f"⚠️ {produto_refatorado} já consta na {self._nome}.")
+            else:
+                print(
+                    f"➕ {produto_refatorado} adicionado com sucesso na {self._nome}."
+                )
+                self._produtos_despensa.add(produto_refatorado)
+
+    def verificar_produto(self):
+        produto = input(f"{self._nome}\nInforme o nome produto que deseja verificar: ")
+        produto_title = produto.title().strip()
+
+        if produto_title not in self._produtos_despensa:
             print(f"❌ {produto_title} NÃO consta na {self._nome}. Precisa repor.")
         else:
             print(f"✅ {produto_title} já consta na {self._nome}.")
 
-    def adicionar_produto_despensa(self, produto: str):
-        produto_title = produto.title()
-        if produto_title in self._produtos:
-            print(f"⚠️ {produto_title} já consta na lista da {self._nome}.")
-        else:
-            self._produtos.add(produto_title)
-            print(f"➕ {produto_title} adicionado com sucesso na {self._nome}.")
+    def mostrar_despensa(self):
+        print(f"--- {self._nome} ---\n")
+        for indice, produto in enumerate(sorted(self._produtos_despensa), 1):
+            print(f"{indice}.{produto}")
