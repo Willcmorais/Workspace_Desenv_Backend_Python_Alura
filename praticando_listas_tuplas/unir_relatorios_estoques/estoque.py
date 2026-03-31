@@ -4,31 +4,30 @@
 
 
 class Estoque:
-    def __init__(self, proprietario_estoque):
-        self._proprietario_estoque = proprietario_estoque
-        self._estoque1 = (
-            "Arroz",
-            "Feijão",
-            "Macarrão",
-            "Carne",
-            "Frango",
-        )
-        self._estoque2 = (
-            "Peixe",
-            "Cenoura",
-            "Alface",
-            "Suco",
-            "Iogurte",
-        )
+    _estoque_geral = []
 
-    def __str__(self):
-        return f"Estoque 1: {self._estoque1}\nEstoque 2: {self._estoque2}"
+    def __init__(self, proprietario):
+        self._proprietario = proprietario
+        self._estoque = ()
 
-    def unificar_estoque(self):
-        self._estoque_unificado = self._estoque1 + self._estoque2
-        return self._estoque_unificado
+    def adicionar_ao_estoque(self):
+        print(f"--- {self._proprietario} ---")
+        entrada = input(
+            "Informe o que quer adicionar ao estoque separado por vírgula: "
+        ).split(",")
+
+        entrada_refatorada = tuple(item.title().strip() for item in entrada)
+
+        self._estoque += entrada_refatorada
+
+        self._estoque_geral += self._estoque
 
     def listar_estoque(self):
-        print("--- Lista do estoque unificado ---")
-        for produto in self._estoque_unificado:
+        print(f"--- Lista {self._proprietario} ---")
+        for produto in self._estoque:
+            print(f"- {produto}")
+
+    def listar_estoque_geral(self):
+        print(f"--- {self._proprietario} ---")
+        for produto in self._estoque_geral:
             print(f"- {produto}")
