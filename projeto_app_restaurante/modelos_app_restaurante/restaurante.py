@@ -1,4 +1,4 @@
-from avaliacao_restaurante import Avaliacao
+from modelos_app_restaurante.avaliacao_restaurante import Avaliacao
 
 
 class Restaurante:
