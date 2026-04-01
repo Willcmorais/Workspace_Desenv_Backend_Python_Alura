@@ -1,5 +1,5 @@
 # Se o arquivo main estiver dentro da mesma pasta não é preciso puxar também o diretório da pasta.
-from restaurante_com_property import Restaurante
+from projeto_app_restaurante.modelos_app_restaurante.restaurante import Restaurante
 
 
 def main():
