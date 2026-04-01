@@ -4,30 +4,35 @@
 
 
 class Estoque:
-    _estoque_geral = []
-
     def __init__(self, proprietario):
         self._proprietario = proprietario
         self._estoque = ()
 
-    def adicionar_ao_estoque(self):
+    def solicitar_entrada(self):
         print(f"--- {self._proprietario} ---")
+
         entrada = input(
-            "Informe o que quer adicionar ao estoque separado por vírgula: "
+            "Adicione aqui ao seu estoque (digite os itens separados por vírgula): "
         ).split(",")
 
         entrada_refatorada = tuple(item.title().strip() for item in entrada)
 
-        self._estoque += entrada_refatorada
+        return entrada_refatorada
 
-        self._estoque_geral += self._estoque
+    def adicionar_ao_estoque(self, produtos):
+        self._estoque += produtos
 
     def listar_estoque(self):
         print(f"--- Lista {self._proprietario} ---")
         for produto in self._estoque:
             print(f"- {produto}")
 
-    def listar_estoque_geral(self):
-        print(f"--- {self._proprietario} ---")
-        for produto in self._estoque_geral:
+    def unificar_estoques(self, *estoques):
+        print("--- Relatório Estoque Geral ---")
+        estoque_total = self._estoque
+
+        for estoque in estoques:
+            estoque_total += estoque._estoque
+
+        for produto in estoque_total:
             print(f"- {produto}")

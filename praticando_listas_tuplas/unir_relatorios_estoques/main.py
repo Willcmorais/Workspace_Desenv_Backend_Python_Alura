@@ -2,19 +2,21 @@ from estoque import Estoque
 
 
 def main():
-
     estoque1 = Estoque("Estoque do José")
-    estoque1.adicionar_ao_estoque()
+    entrada_estoque1 = estoque1.solicitar_entrada()
+    estoque1.adicionar_ao_estoque(entrada_estoque1)
     print()
     estoque1.listar_estoque()
     print()
+
     estoque2 = Estoque("Estoque da Mariana")
-    estoque2.adicionar_ao_estoque()
+    entrada_estoque2 = estoque2.solicitar_entrada()
+    estoque2.adicionar_ao_estoque(entrada_estoque2)
     print()
     estoque2.listar_estoque()
     print()
-    estoque_geral = Estoque("Estoque Geral")
-    estoque_geral.listar_estoque_geral()
+
+    estoque1.unificar_estoques(estoque2)
 
 
 if __name__ == "__main__":
