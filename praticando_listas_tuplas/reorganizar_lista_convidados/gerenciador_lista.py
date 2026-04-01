@@ -5,14 +5,16 @@
 
 class GerenciadorLista:
     def __init__(self):
-        self._lista_convidados = ["Mario", "Carlos", "Jorge", "Maria"]
+        self._convidados = []
 
-    def __str__(self):
-        return f"Lista de convidados:\n {self._lista_convidados}"
+    def adicionar_convidados(self, convidados):
+        for convidado in convidados:
+            self._convidados.append(convidado.strip())
 
-    def adicionar_convidado(self, posicao: int, convidado: str):
-        self._lista_convidados.insert(posicao, convidado)
+    def remanejar_novo_convidado(self, posicao, convidado):
+        self._convidados.insert(posicao, convidado)
 
     def mostrar_lista(self):
-        for convidado in self._lista_convidados:
+        print("--- Lista de convidados ---")
+        for convidado in self._convidados:
             print(f"- {convidado}")
