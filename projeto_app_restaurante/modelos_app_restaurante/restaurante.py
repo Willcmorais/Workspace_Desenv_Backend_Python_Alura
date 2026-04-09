@@ -95,7 +95,8 @@ class Restaurante:
     def exibir_cardapio(self):
         print(f"=== Cardápio {self._nome} ===\n")
 
-        for indice, item in enumerate(self._cardapio):
+        for indice, item in enumerate(self._cardapio, 1):
+            # hasatrr é um método que serve para comparar se existe ou não um atributo.
             if hasattr(item, "_descricao"):
                 mensagem_prato = f"{indice}. Nome: {item._nome} | Preço: R$ {item._preco:.2f} | Descrição: {item._descricao}"
                 print(mensagem_prato)
