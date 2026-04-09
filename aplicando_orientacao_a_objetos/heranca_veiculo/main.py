@@ -11,6 +11,11 @@ def main():
     moto2 = Moto("kawasaki", "ninja 300", "sport")
     moto3 = Moto("honda", "tornado", "racing")
 
+    carro1.ligar()
+    carro2.ligar()
+    moto1.ligar()
+    moto3.ligar()
+    print()
     print(carro1)
     print(carro2)
     print(carro3)
