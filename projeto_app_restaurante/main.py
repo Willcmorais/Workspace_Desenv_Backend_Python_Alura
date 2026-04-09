@@ -9,8 +9,14 @@ def main():
     restaurante_mexicano = Restaurante(
         "escalantes texmex", "comida mexicana", "16h às 00h"
     )
-    bebida_suco = Bebida("suco de melância", 5.50, "350ml")
-    prato_paozinho = Prato("misto quente", 9.90, "pão de forma com queijo e presunto")
+
+    bebida_suco = Bebida("suco de melância", 8.50, "350ml")
+    prato_nachos = Prato(
+        "nachos", 29.90, "nachos com delicioso molho de queijo cremoso"
+    )
+
+    restaurante_mexicano.adicionar_ao_cardapio(bebida_suco)
+    restaurante_mexicano.adicionar_ao_cardapio(prato_nachos)
 
     # implementando a avaliação para o restaurante
     restaurante_mexicano.receber_avaliacao("Guilherme", 5)
@@ -19,10 +25,9 @@ def main():
 
     # listando todos os restaurantes
     Restaurante.listar_restaurantes()
-
     print()
-    print(bebida_suco._nome)
-    print(prato_paozinho._nome)
+
+    restaurante_mexicano.exibir_cardapio
 
 
 if __name__ == "__main__":

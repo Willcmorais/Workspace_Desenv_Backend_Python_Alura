@@ -1,5 +1,7 @@
 from modelos_app_restaurante.avaliacao_restaurante import Avaliacao
 
+from modelos_app_restaurante.cardapio.item_cardapio import ItemCardapio
+
 
 class Restaurante:
     """Representa um restaurante e suas características."""
@@ -22,6 +24,7 @@ class Restaurante:
         self._horario_funcionamento = horario_funcionamento
         self._status = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.lista_de_restaurantes.append(self)
 
     def __str__(self):
@@ -76,3 +79,26 @@ class Restaurante:
     def alternar_status(self):
         """Alterna o estado de atividade do restaurante."""
         self._status = not self._status
+
+    # def adicionar_bebida_no_cardapio(self, bebida):
+    #     self._cardapio.append(bebida)
+
+    # def adicionar_prato_no_cardapio(self, prato):
+    #     self._cardapio.append(prato)
+
+    def adicionar_ao_cardapio(self, item):
+        # Verifica se um objeto pertence a uma classe específica ou a uma subclasse dela. Retorna True ou False.
+        if isinstance(item, ItemCardapio):
+            self._cardapio.append(item)
+
+    @property
+    def exibir_cardapio(self):
+        print(f"=== Cardápio {self._nome} ===\n")
+
+        for indice, item in enumerate(self._cardapio):
+            if hasattr(item, "_descricao"):
+                mensagem_prato = f"{indice}. Nome: {item._nome} | Preço: R$ {item._preco:.2f} | Descrição: {item._descricao}"
+                print(mensagem_prato)
+            elif hasattr(item, "_tamanho"):
+                mensagem_bebida = f"{indice}. Nome: {item._nome} | Preço: R$ {item._preco:.2f} | Tamanho: {item._tamanho}"
+                print(mensagem_bebida)
