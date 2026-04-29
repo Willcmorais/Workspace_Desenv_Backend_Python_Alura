@@ -1,0 +1,15 @@
+# Ana está organizando uma festa de aniversário e precisa de uma lista de convidados que não tenha repetições , pois algumas pessoas foram convidadas mais de uma vez por engano. Ela gostaria que o programa solicitasse o nome dos convidados e, ao final, exibisse a lista organizada sem repetições.
+# Escreva um programa que receba os nomes dos convidados até que o usuário digite 'sair', e ao final mostre a lista de convidados sem repetições.
+lista_convidados = set()
+
+while True:
+    entrada = input("\nDigite o nome dos convidados ou 'sair' para encerrar: ").title()
+    if entrada == "Sair":
+        break
+    lista_convidados.add(entrada)
+
+
+print("\n=== Lista de convidados confirmados ===")
+
+for posicao, convidado in enumerate(lista_convidados, 1):
+    print(f". {posicao} - {convidado}")
