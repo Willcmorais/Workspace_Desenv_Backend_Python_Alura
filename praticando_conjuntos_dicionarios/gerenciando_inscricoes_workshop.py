@@ -32,3 +32,22 @@ else:
         print(
             f". Nome: {nome} - Dados(idade, estado civil, formação): {', '.join(dados)}."
         )
+
+if len(dict_informacoes_participantes) != 0:
+    participante_retirado = (
+        input("\nInforme o nome do participante que deseja retirar: ").title().strip()
+    )
+
+    if participante_retirado in dict_informacoes_participantes.keys():
+        dict_informacoes_participantes.pop(participante_retirado)
+
+        print("\n=== Participantes do Workshop(Atualizado) ===\n")
+        if len(dict_informacoes_participantes) == 0:
+            print("Nenhum participante foi cadastrado.")
+        else:
+            for nome, dados in dict_informacoes_participantes.items():
+                print(
+                    f". Nome: {nome} - Dados(idade, estado civil, formação): {', '.join(dados)}."
+                )
+else:
+    print("Nenhum participante cadastrado.")
