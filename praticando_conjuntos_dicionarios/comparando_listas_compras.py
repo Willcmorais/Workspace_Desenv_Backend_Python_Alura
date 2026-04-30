@@ -7,13 +7,15 @@
 # Escreva um programa que solicite as listas e mostre os resultados dessas comparações.
 
 lista_compras_laura = set(
-    input("\nInforme os itens da lista da Laura(separados por vírgula): ")
+    item.strip()
+    for item in input("\nInforme os itens da lista da Laura(separados por vírgula): ")
     .lower()
     .split(", ")
 )
 
 lista_compras_ana = set(
-    input("\nInforme os itens da lista da Ana(separados por vígula): ")
+    item.strip()
+    for item in input("\nInforme os itens da lista da Ana(separados por vígula): ")
     .lower()
     .split(", ")
 )
