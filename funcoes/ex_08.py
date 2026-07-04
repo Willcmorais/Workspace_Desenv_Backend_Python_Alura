@@ -2,17 +2,13 @@
 
 
 def calcular():
-    somar = lambda v1, v2: (primeiro_numero + segundo_numero)
-    subtrair = lambda v1, v2: (primeiro_numero - segundo_numero)
-    multiplicar = lambda v1, v2: (primeiro_numero * segundo_numero)
-    dividir = lambda v1, v2: (
-        (primeiro_numero / segundo_numero)
-        if segundo_numero != 0
-        else "Erro: Divisão por zero."
-    )
+    somar = lambda v1, v2: (v1 + v2)
+    subtrair = lambda v1, v2: (v1 - v2)
+    multiplicar = lambda v1, v2: (v1 * v2)
+    dividir = lambda v1, v2: ((v1 / v2) if v2 != 0 else "Erro: Divisão por zero.")
 
-    primeiro_numero = float(input("Informe o primeiro número: "))
-    segundo_numero = float(input("Informe o segundo número: "))
+    v1 = float(input("Informe o primeiro número: "))
+    v2 = float(input("Informe o segundo número: "))
     operador = input("Escolha a operação (|+|-|*|/|): ")
 
     # if operador == "+":
@@ -31,7 +27,7 @@ def calcular():
 
     if operador in operacoes:
         # retorna a operação entre o primeiro e o segundo valor
-        return operacoes[operador](primeiro_numero, segundo_numero)
+        return operacoes[operador](v1, v2)
     else:
         print("Operação inválida")
 

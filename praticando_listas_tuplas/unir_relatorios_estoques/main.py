@@ -16,7 +16,13 @@ def main():
     estoque2.listar_estoque()
     print()
 
-    estoque1.unificar_estoques(estoque2)
+    estoque3 = Estoque("Estoque do João")
+    entrada_estoque3 = estoque3.solicitar_entrada()
+    estoque3.adicionar_ao_estoque(entrada_estoque3)
+    print()
+    estoque3.listar_estoque()
+    print()
+    estoque3.unificar_estoques(estoque1, estoque2)
 
 
 if __name__ == "__main__":
