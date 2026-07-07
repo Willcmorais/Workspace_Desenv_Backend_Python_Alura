@@ -27,7 +27,7 @@ restaurantes = [
 # Funções são utilizadas para deixar o código mais limpo, e quando necessário alguma alteração, podemos fazer isso apenas na função e não nas condicionais
 def exibir_nome_programa():
     """Esta função vai exibir o nome do programa para o usuário.
-    
+
     Outputs:
     - Título do app.
     """
@@ -39,7 +39,7 @@ def exibir_nome_programa():
 
 def exibir_opcoes():
     """Esta função vai exibir as opções do programa para o usuário
-    
+
     Outputs:
     - Opções do app para o usuário.
     """
@@ -52,12 +52,12 @@ def exibir_opcoes():
 
 def cadastrar_novo_restaurante():
     """Esta função é para cadastrar novos restaurantes. Solicitando o nome, categoria e proprietário. Ele sempre inicia como inativo.
-    
+
     Inputs:
     - Nome do restaurante;
     - Categoria do restaurante;
     - Nome do proprietário.
-    
+
     Outputs:
     - Adiciona todas as informações dos inputs para um novo dicionário na lista;
     - Caso o cadastro tenha sido finalizado, mostra mensagem de sucesso na tela com o nome do restaurante;
@@ -90,7 +90,7 @@ def cadastrar_novo_restaurante():
 
 def listar_restaurantes():
     """Esta função vai listar os restaurantes cadastrados no formato de tabela com o nome, categoria, proprietário e o status. Está tudo justificado
-    
+
     Outputs:
     - Exibe o subtítulo da função;
     - Exibe as informações dos restaurantes já cadastrados em forma de tabela justificada;
@@ -103,7 +103,7 @@ def listar_restaurantes():
         "Nome do restaurante:".ljust(22),
         "Categoria:".ljust(22),
         "Proprietário(a):".ljust(22),
-        "Ativo:"
+        "Ativo:",
     )
 
     for restaurante in restaurantes:
@@ -115,11 +115,11 @@ def listar_restaurantes():
 
 def alternar_estado_restaurante():
     """Esta função vai alternar o status de ativado ou desativado dos restaurantes. Caso o restaurante esteja ativo ele vai desativar, e vice versa. Caso o restaurante esteja desativado e tentemos desativar ele vai mostrar a mensagem de erro, e vice versa.
-    
+
     Inputs:
     - Nome do restaurante;
     - Alternar o estado do restaurante(ativado, desativado).
-    
+
     Outputs:
     - Mensagens de sucesso para restaurantes ativados ou desativados
     - Mensagens de erro para restaurantes já ativados que tentaram ser ativados ou desativados que tentaram ser desativados;
@@ -136,15 +136,15 @@ def alternar_estado_restaurante():
                 input("\nDigite 0 para desativar ou 1 para ativar: ")
             )
 
-            if alternar_estado_restaurante == 0 and restaurante["ativo"] == True:
+            if alternar_estado_restaurante == 0 and restaurante["ativo"]:
                 restaurante["ativo"] = False
                 print(
                     f"\nO restaurante {restaurante['nome']} foi desativado com sucesso."
                 )
-            elif alternar_estado_restaurante == 1 and restaurante["ativo"] == False:
+            elif alternar_estado_restaurante == 1 and not restaurante["ativo"]:
                 restaurante["ativo"] = True
                 print(f"\nO restaurante {restaurante['nome']} foi ativado com sucesso.")
-            elif alternar_estado_restaurante == 0 and restaurante["ativo"] == False:
+            elif alternar_estado_restaurante == 0 and not restaurante["ativo"]:
                 print("\nNão é possível desativar restaurante, ele já está desativado.")
             else:
                 print("\nNão é possível ativar restaurante, ele já está ativo.")
@@ -185,7 +185,7 @@ def escolher_opcao():
                 encerrar_programa()
             case _:
                 opcao_invalida()
-    except:
+    except:  # noqa: E722
         opcao_invalida()
 
     # if opcao_escolhida == 1:

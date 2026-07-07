@@ -1,6 +1,3 @@
-from musica import Musica
-
-
 class Playlist:
     def __init__(self, nome_playlist=""):
         self._nome_playlist = nome_playlist

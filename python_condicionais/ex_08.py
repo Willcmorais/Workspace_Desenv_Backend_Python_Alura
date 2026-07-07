@@ -23,11 +23,11 @@ def calculo_de_pedagio():
     pedagio_valor_20 = 100 < distancia_percorrida <= 200
 
     if pedagio_valor_10:
-        print(f"Valor do pedágio(R$): 10,00.")
+        print("Valor do pedágio(R$): 10,00.")
     elif pedagio_valor_20:
-        print(f"Valor do pedágio(R$): 20,00.")
+        print("Valor do pedágio(R$): 20,00.")
     else:
-        print(f"Valor do pedágio(R$): 30,00.")
+        print("Valor do pedágio(R$): 30,00.")
 
 
 def main():

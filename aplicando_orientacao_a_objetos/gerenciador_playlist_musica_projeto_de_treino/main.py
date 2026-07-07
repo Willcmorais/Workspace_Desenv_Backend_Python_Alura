@@ -1,6 +1,4 @@
 from musica import Musica
-from artista import Artista
-from album import Album
 from playlist import Playlist
 
 

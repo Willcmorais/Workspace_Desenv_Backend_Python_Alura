@@ -5,4 +5,4 @@
 projetos = ["website", "jogo", "análise de dados", None, "aplicativo móvel"]
 
 for nome in projetos:
-    print("Projeto ausente") if nome == None else print(nome)
+    print("Projeto ausente") if nome is None else print(nome)
