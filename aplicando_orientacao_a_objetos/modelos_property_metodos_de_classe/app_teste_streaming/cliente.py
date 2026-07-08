@@ -2,8 +2,8 @@ class Cliente:
     def __init__(self, nome, email, plano):
         self._nome = nome.title()
         self._email = email
-        self._planos = ["Basic", "Medium", "Premium"]
         self._plano = plano.title()
+        self._planos = ["Basic", "Medium", "Premium"]
 
         if self._plano in self._planos:
             self._plano

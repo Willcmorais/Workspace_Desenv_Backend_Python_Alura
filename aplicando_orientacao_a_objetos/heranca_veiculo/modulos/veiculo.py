@@ -1,4 +1,6 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
+
+
 class Veiculo:
     def __init__(self, marca, modelo):
         self._marca = marca.title()
@@ -10,7 +12,7 @@ class Veiculo:
 
     @property
     def ligado(self):
-        return f"Ligado" if self._ligado else "Desligado"
+        return "Ligado" if self._ligado else "Desligado"
 
     @abstractmethod
     def ligar(self):

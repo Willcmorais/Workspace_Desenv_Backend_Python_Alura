@@ -1,6 +1,3 @@
-from livro_testes import Livro
-
-
 class Biblioteca:
     def __init__(self, nome_biblioteca):
         self._nome_biblioteca = nome_biblioteca
