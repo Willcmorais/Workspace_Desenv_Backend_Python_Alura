@@ -7,11 +7,12 @@ class Pessoa:
     def __str__(self):
         return f"{self._nome} | {self._idade} anos | {self._profissao}."
 
-    @property
+    # Isso DEVE ser um método normal, porque altera um dado (ação)
     def aniversario(self):
         self._idade += 1
         return f"Parabéns pelo seu aniversário {self._nome}! Você agora tem {self._idade} anos!"
 
+    # Isso PODE ser uma property, porque apenas lê e formata dados
     @property
     def saudacao(self):
         if self._profissao:
