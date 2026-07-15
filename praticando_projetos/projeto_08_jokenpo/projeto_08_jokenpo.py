@@ -1,26 +1,51 @@
-import random, os
+import os
+import random
 
 # Variável global das opções disponíveis
 opcoes_validas = {0: "Sair", 1: "Pedra", 2: "Papel", 3: "Tesoura"}
 
 # ---------------------------------------------------------
-# FUNÇÕES DE INTERFACE / VISUAIS
+# FUNÇÃO PRINCIPAL (CONTROLADOR)
 # ---------------------------------------------------------
 
 
-def limpar_tela():
-    # O próprio input já serve para pausar e esperar o Enter
-    input("\nPressione 'Enter' para continuar...")
-    # Condição para funcionar no Windows ('nt') ou Linux/Mac ('posix')
-    os.system("cls" if os.name == "nt" else "clear")
+def jogar():
+    # Dicionário para traduzir o número na jogada correspondente
+    # Variáveis de pontuação
+    pontos_jogador = 0
+    pontos_maquina = 0
 
+    while True:
+        # Chama a função para mostrar o placar
+        exibir_placar(pontos_jogador, pontos_maquina)
 
-def exibir_placar(pontos_jogador, pontos_maquina):
-    # Exibição do Placar
-    print("=" * 35)
-    print(f"  PLACAR: Você {pontos_jogador} x {pontos_maquina} Máquina")
-    print("=" * 35)
-    print("Opções: [0] Sair | [1] Pedra | [2] Papel | [3] Tesoura\n")
+        # Função que valida a jogada
+        opcao_escolhida = validar_jogada()
+
+        if opcao_escolhida == 0:
+            print(
+                f"\nSaindo do jogo...\nPlacar final: Você {pontos_jogador} x {pontos_maquina} Máquina.\nAté mais!"
+            )
+            break
+
+        opcao_da_maquina = random.randint(1, 3)
+
+        # Agora mostramos o nome da jogada em vez do número
+        print(
+            f"\nVocê escolheu {opcoes_validas[opcao_escolhida]} e máquina escolheu {opcoes_validas[opcao_da_maquina]}."
+        )
+
+        # Função que determina os resultados
+        resultado, mensagem = determinar_resultado(opcao_escolhida, opcao_da_maquina)
+
+        print(mensagem)
+
+        if resultado == "jogador":
+            pontos_jogador += 1
+        elif resultado == "maquina":
+            pontos_maquina += 1
+
+        limpar_tela()
 
 
 # ---------------------------------------------------------
@@ -72,47 +97,23 @@ def determinar_resultado(opcao_escolhida, opcao_da_maquina):
 
 
 # ---------------------------------------------------------
-# FUNÇÃO PRINCIPAL (CONTROLADOR)
+# FUNÇÕES DE INTERFACE / VISUAIS
 # ---------------------------------------------------------
 
 
-def jogar():
-    # Dicionário para traduzir o número na jogada correspondente
-    # Variáveis de pontuação
-    pontos_jogador = 0
-    pontos_maquina = 0
+def limpar_tela():
+    # O próprio input já serve para pausar e esperar o Enter
+    input("\nPressione 'Enter' para continuar...")
+    # Condição para funcionar no Windows ('nt') ou Linux/Mac ('posix')
+    os.system("cls" if os.name == "nt" else "clear")
 
-    while True:
-        # Chama a função para mostrar o placar
-        exibir_placar(pontos_jogador, pontos_maquina)
 
-        # Função que valida a jogada
-        opcao_escolhida = validar_jogada()
-
-        if opcao_escolhida == 0:
-            print(
-                f"\nSaindo do jogo...\nPlacar final: Você {pontos_jogador} x {pontos_maquina} Máquina.\nAté mais!"
-            )
-            break
-
-        opcao_da_maquina = random.randint(1, 3)
-
-        # Agora mostramos o nome da jogada em vez do número
-        print(
-            f"\nVocê escolheu {opcoes_validas[opcao_escolhida]} e máquina escolheu {opcoes_validas[opcao_da_maquina]}."
-        )
-
-        # Função que determina os resultados
-        resultado, mensagem = determinar_resultado(opcao_escolhida, opcao_da_maquina)
-
-        print(mensagem)
-
-        if resultado == "jogador":
-            pontos_jogador += 1
-        elif resultado == "maquina":
-            pontos_maquina += 1
-
-        limpar_tela()
+def exibir_placar(pontos_jogador, pontos_maquina):
+    # Exibição do Placar
+    print("=" * 35)
+    print(f"  PLACAR: Você {pontos_jogador} x {pontos_maquina} Máquina")
+    print("=" * 35)
+    print("Opções: [0] Sair | [1] Pedra | [2] Papel | [3] Tesoura\n")
 
 
 def main():
