@@ -16,7 +16,7 @@ def somar_numeros():
             numero = float(input(f"Informe o {i}º número: "))
             soma += numero
         except ValueError:
-            return print(f"Erro: Digite apenas números válidos!")
+            return print("Erro: Digite apenas números válidos!")
     return soma
 
 

@@ -19,7 +19,7 @@ def contar_vogais_texto():
 
 def mostrar_resultado(contagem_de_vogais):
     print(f"\nO texto contém {len(contagem_de_vogais)} vogais.\n")
-    print(f"Listagem das vogais contidas no texto:\n")
+    print("Listagem das vogais contidas no texto:\n")
 
     for letra, quantidade in contagem_de_vogais.items():
         print(f"Vogal: {letra} -> Quantidade: {quantidade}.")
