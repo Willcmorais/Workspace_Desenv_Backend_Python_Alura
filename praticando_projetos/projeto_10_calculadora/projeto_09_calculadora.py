@@ -74,7 +74,7 @@ def mostrar_resultado() -> None:
             f"\nResultado: {primeiro_numero} {operador} {segundo_numero} = {resultado:.2f}"
         )
     except ZeroDivisionError:
-        print(f"\n[Erro] Não é possível dividir por zero.")
+        print("\n[Erro] Não é possível dividir por zero.")
 
 
 def main():
